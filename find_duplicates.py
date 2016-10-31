@@ -14,12 +14,15 @@ TO DO:
 -Clean up output
 -Figure out some way to hash chunks of a file and combine those chunks.
 (This will allow the script to be pointed at directories with large files.)
+-Output duplicates to a text file in the working directory
 """
 
-import hashlib, sys, os
+import hashlib, sys, os, time
 
 hashed = {}
 duplicates = {}
+
+start = time.time()
 
 def md5_hash(path):
     return hashlib.md5(open(path, 'rb').read()).hexdigest()
@@ -42,3 +45,9 @@ for k,v in duplicates.items():
         print(v)
         print("Found " + str(len(v)) + " duplicates.")
         print("\n")
+
+end = time.time()
+total = str(round((end - start),2))
+
+print("Program finished in " + total + " seconds.")
+print("\n")
