@@ -1,3 +1,21 @@
+"""
+find_duplicates.py takes a directory path as an argument and recursively traverses the target directory
+to locate all of the files (excluding folders). The files are then MD5 hashed and added to a dictionary<filepath:md5_checksum>.
+Once all files are hashed, any dictionary entries with matching MD5 checksums are added to another dictionary and then
+the contents of that dictionary are echoed to the screen, indicating the filepath/files that are duplicates.
+
+usage example:
+>python find_duplicates.py 'C:\\Users\\josh.terry\\Desktop\\test'
+
+Constraints: This utility should not be used on directories with files that are several gigabytes in size.
+Attempting to pull large files into memory to MD5 hash them is beyond what this script is designed to do.
+
+TO DO:
+-Clean up output
+-Figure out some way to hash chunks of a file and combine those chunks.
+(This will allow the script to be pointed at directories with large files.)
+"""
+
 import hashlib, sys, os
 
 hashed = {}
